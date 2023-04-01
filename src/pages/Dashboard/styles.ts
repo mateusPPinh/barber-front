@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { lighten } from "polished";
 
 const Container = styled.div`
   width: 100%;
@@ -14,6 +13,7 @@ const Container = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-around;
+    width: 100vw;
 
     span {
       color: ${props => props.theme.pallete.white}
@@ -28,4 +28,31 @@ const Container = styled.div`
   }
 `;
 
-export {Container}
+const DashboardContainer = styled.div`
+  padding: 64px 160px;
+`
+const AppointmentsSectionContainer = styled.div`
+  max-width: 640px;
+  width: 100%;
+`
+const SoonAppointmentsSectionContainer = styled.div`
+
+`
+
+const MorningAppointmentsContainer = styled.div``;
+
+const Divider = styled.div`
+  width: 640px;
+  border: 1px solid ${props => props.theme.pallete.shape};
+  margin-top: 16px;
+  margin-bottom: 24px;
+`;
+
+export {
+  Container,
+  AppointmentsSectionContainer,
+  DashboardContainer,
+  SoonAppointmentsSectionContainer,
+  MorningAppointmentsContainer,
+  Divider
+}
