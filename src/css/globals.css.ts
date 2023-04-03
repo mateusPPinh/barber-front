@@ -9,7 +9,7 @@ export default createGlobalStyle`
   }
 
   body {
-    font-family: 'Roboto', sans-serif;
+    font-family: 'Roboto Slab', sans-serif;
   }
 
   button {
@@ -21,7 +21,7 @@ export default createGlobalStyle`
   }
 
   input, textarea, button {
-    font: 16px Roboto;
+    font: 16px Roboto Slab;
   }
 
   ul, li {

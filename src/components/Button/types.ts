@@ -5,4 +5,5 @@ export interface IButtonProps extends ButtonHTMLAttributes<HTMLButtonElement> {
   mt?: number;
   mb?: number;
   isDisabled?: boolean;
+  onClick?(): void;
 }

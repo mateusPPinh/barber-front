@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import { lighten } from "polished";
 
 const Container = styled.div`
   width: 100%;
@@ -28,4 +27,19 @@ const Container = styled.div`
   }
 `;
 
-export {Container}
+const DashboardContainer = styled.div`
+  padding: 64px 160px;
+`
+
+const Divider = styled.div`
+  width: 640px;
+  border: 1px solid ${props => props.theme.pallete.shape};
+  margin-top: 16px;
+  margin-bottom: 24px;
+`;
+
+export {
+  Container,
+  DashboardContainer,
+  Divider,
+}
