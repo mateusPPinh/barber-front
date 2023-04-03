@@ -13,7 +13,6 @@ const Container = styled.div`
     display: flex;
     flex-direction: row;
     justify-content: space-around;
-    width: 100vw;
 
     span {
       color: ${props => props.theme.pallete.white}
@@ -31,15 +30,6 @@ const Container = styled.div`
 const DashboardContainer = styled.div`
   padding: 64px 160px;
 `
-const AppointmentsSectionContainer = styled.div`
-  max-width: 640px;
-  width: 100%;
-`
-const SoonAppointmentsSectionContainer = styled.div`
-
-`
-
-const MorningAppointmentsContainer = styled.div``;
 
 const Divider = styled.div`
   width: 640px;
@@ -50,9 +40,6 @@ const Divider = styled.div`
 
 export {
   Container,
-  AppointmentsSectionContainer,
   DashboardContainer,
-  SoonAppointmentsSectionContainer,
-  MorningAppointmentsContainer,
-  Divider
+  Divider,
 }

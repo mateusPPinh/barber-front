@@ -6,6 +6,11 @@ interface AuthState {
   user: any;
 }
 
+interface UserRoles {
+  USER: string;
+  ADMIN: string;
+}
+
 interface SignInCredencials {
   email: string;
   password: string;
@@ -16,10 +21,12 @@ interface AuthContextData {
     id: number;
     email: string;
     name: string;
-    isAdmin?: boolean;
+    role?: UserRoles;
+    photo?: string;
   };
   signIn(credencials: SignInCredencials): Promise<void>;
   signOut(): void;
+  updateUserPhoto?(newPhoto: string): void;
 }
 
 const AuthContext = createContext<AuthContextData>({} as AuthContextData);
@@ -49,6 +56,14 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
     setData({ token, user });
   }, []);
 
+  const updateUserPhoto = useCallback((newPhoto: string) => {
+    const updatedUser = { ...data.user, photo: newPhoto };
+  
+    localStorage.setItem('@sys:user', JSON.stringify(updatedUser));
+  
+    setData((prevState) => ({ ...prevState, user: updatedUser }));
+  }, []);
+
   const signOut = useCallback(() => {
     localStorage.removeItem('@sys:token');
     localStorage.removeItem('@sys:user');
@@ -57,7 +72,7 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ user: data?.user, signIn, signOut }}>
+    <AuthContext.Provider value={{ user: data?.user, signIn, signOut, updateUserPhoto }}>
       {children}
     </AuthContext.Provider>
   );

@@ -41,7 +41,7 @@ const SignUp = () => {
         name: input.name,
         email: input.email,
         password: input.password,
-        isAdmin: inputChecked
+        role: inputChecked
       };
 
       const schema = yup.object().shape({
