@@ -6,6 +6,14 @@ interface AuthState {
   user: any;
 }
 
+interface User {
+  id: number;
+  email: string;
+  name: string;
+  role?: UserRoles;
+  photo?: string;
+}
+
 interface UserRoles {
   USER: string;
   ADMIN: string;
@@ -18,12 +26,13 @@ interface SignInCredencials {
 
 interface AuthContextData {
   user: {
-    id: number;
-    email: string;
-    name: string;
+    id?: number;
+    email?: string;
+    name?: string;
     role?: UserRoles;
     photo?: string;
   };
+  updateUser?(updatedUser: Partial<User>): void;
   signIn(credencials: SignInCredencials): Promise<void>;
   signOut(): void;
   updateUserPhoto?(newPhoto: string): void;
@@ -41,6 +50,14 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
     }
     return {} as AuthState;
   });
+
+  const updateUser = useCallback((updatedUser: Partial<User>) => {
+    const newUser = { ...data.user, ...updatedUser };
+  
+    localStorage.setItem('@sys:user', JSON.stringify(newUser));
+  
+    setData((prevState) => ({ ...prevState, user: newUser }));
+  }, []);
 
   const signIn = useCallback(async ({ email, password }: SignInCredencials) => {
     const response = await api.post('users/login', {
@@ -72,7 +89,7 @@ const AuthProvider = ({ children }: PropsWithChildren) => {
   }, []);
 
   return (
-    <AuthContext.Provider value={{ user: data?.user, signIn, signOut, updateUserPhoto }}>
+    <AuthContext.Provider value={{ user: data?.user, signIn, signOut, updateUserPhoto, updateUser }}>
       {children}
     </AuthContext.Provider>
   );
