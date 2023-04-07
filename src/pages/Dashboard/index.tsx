@@ -3,9 +3,11 @@ import { useNavigate } from "react-router-dom";
 import { 
   Container,
   DashboardContainer,
+  LeftContainer,
+  RightContainer
 } from "./styles";
- import logo from '../../assets/logo.svg'
- import { Fragment } from "react";
+ import { Fragment, useState } from "react";
+ import Calendar from 'react-calendar';
 
 //  import customer from '../../assets/customer.svg'
 // import {MdLogout} from 'react-icons/md'
@@ -16,6 +18,8 @@ import { Header } from "../../components/Header";
 import emptyAvatar from '../../assets/empty-image.svg'
 
 const Dashboard = () => {
+  const [value, onChange] = useState(new Date());
+
   const {user, signOut} = useAuth()
   const navigate = useNavigate()
 
@@ -38,10 +42,19 @@ const Dashboard = () => {
       <Container>
       <div>
         <DashboardContainer>
-          <TypographyComponent size={36} color="white" lineHeight={47}>Horários agendados</TypographyComponent>
-          <TypographyComponent size={16} fontWeight={500} lineHeight={21} color="orange" marginBottom={12}>
-            Hoje | Dia 31 | Sexta-Feira
-          </TypographyComponent>
+          <LeftContainer>
+            <TypographyComponent size={36} color="white" lineHeight={47}>Horários agendados</TypographyComponent>
+            <TypographyComponent size={16} fontWeight={500} lineHeight={21} color="orange" marginBottom={12}>
+              Hoje | Dia 31 | Sexta-Feira
+            </TypographyComponent>
+          </LeftContainer>
+
+          <RightContainer>
+            <Calendar 
+              next2Label={false}
+              prev2Label={false}
+            />
+          </RightContainer>
         </DashboardContainer>
       </div>
     </ Container>

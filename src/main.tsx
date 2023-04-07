@@ -4,6 +4,7 @@ import App from './App'
 import GlobalCSS from './css/globals.css'
 import 'react-toastify/dist/ReactToastify.css';
 import { ToastContainer } from 'react-toastify';
+import 'react-calendar/dist/Calendar.css';
 
 ReactDOM.createRoot(document.getElementById('root') as HTMLElement).render(
   <React.StrictMode>

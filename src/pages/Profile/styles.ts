@@ -20,7 +20,8 @@ const ProfilePictureContainer = styled.div`
 `;
 
 const PhotoInput = styled.div`
-  position: absolute;
+  padding: 0 25%;
+  margin-top: -50px;
 
   button {
     width: 48px;
@@ -46,12 +47,12 @@ const Image = styled.img`
 const ProfileContent = styled.div`
   max-width: 340px;
   width: 100%;
-  margin-top: 32px;
 `;
 
 const InputsContainer = styled.div`
   display: flex;
   flex-direction: column;
+  margin-top: 24px;
 
   input + input {
     margin-top: 8px

@@ -13,7 +13,7 @@ const SignUp = () => {
   const navigate = useNavigate();
   const [input, setInput] = useState(initialState);
   const [loading, setLoading] = useState(false);
-  const [inputChecked, setInputChecked] = useState(false);
+  const [inputChecked, setInputChecked] = useState("");
 
   const formRef = useRef(null)
   console.log(formRef)
@@ -29,7 +29,7 @@ const SignUp = () => {
   };
 
   const handleInputCheckbox = (event: React.ChangeEvent<HTMLInputElement>) => {
-    setInputChecked(event.target.checked);
+    setInputChecked(event.target.checked ? 'ADMIN' : 'USER');
   };
 
   const handleSubmit = async (event: React.FormEvent<HTMLFormElement>) => {
